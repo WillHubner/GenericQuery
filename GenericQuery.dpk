@@ -28,6 +28,20 @@ package GenericQuery;
 {$IMPLICITBUILD ON}
 
 requires
-  rtl;
+  rtl,
+  vcl,
+  dbrtl,
+  vclFireDAC,
+  FireDAC,
+  FireDACSqliteDriver,
+  FireDACCommonDriver,
+  FireDACCommon,
+  FireDACIBDriver,
+  FireDACMySQLDriver;
+
+contains
+  Model.Connection in 'src\core\Connection\Model.Connection.pas',
+  Model.GenericQuery in 'src\core\GenericQuery\Model.GenericQuery.pas',
+  Model.GenericQuery.Intf in 'src\interfaces\Model.GenericQuery.Intf.pas';
 
 end.
