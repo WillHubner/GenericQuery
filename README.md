@@ -8,7 +8,7 @@ Implement the uses Model.Connection, Model.GenericQuery two parameters Model.Con
 
 #Execute
 
-Execute command returs a boolean value.
+Execute command returns a boolean value.
 ```delphi
   TGenericQuery
     .New
