@@ -1,6 +1,7 @@
 # GenericQuery
 
 Class component a easily way to convert your SQL condition to a JSONArray or JSONString.
+Default database is running in firebird. To change only modify Mode.Connection uses.
 
 # How to use
 
