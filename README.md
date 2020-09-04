@@ -7,7 +7,7 @@ Default database is running in firebird. To change only modify Mode.Connection u
 
 Implement the uses Model.Connection, Model.GenericQuery two parameters Model.Connection.FServer, Model.Connection.FDataBase.
 
-#Execute
+## Execute
 
 Execute command returns a boolean value.
 ```delphi
@@ -17,7 +17,7 @@ Execute command returns a boolean value.
     .SQL('')
     .Execute
 ```
-#OpenArray
+## OpenArray
 
 Open a Array of Objects with fields data
 ```delphi
@@ -28,7 +28,7 @@ Open a Array of Objects with fields data
     .OpenArray
 ```
 
-#OpenObject
+## OpenObject
 
 Open a Objects with only first register of sql
 ```delphi
