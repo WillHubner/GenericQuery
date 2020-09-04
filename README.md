@@ -9,32 +9,31 @@ Implement the uses Model.Connection, Model.GenericQuery two parameters Model.Con
 #Execute
 
 Execute command returs a boolean value.
-<details>
+```delphi
   TGenericQuery
     .New
     .SQL('')
     .SQL('')
     .Execute
-</details>
-
+```
 #OpenArray
 
 Open a Array of Objects with fields data
-<details>
+```delphi
   TGenericQuery
     .New
     .SQL('')
     .SQL('')
-    .Execute
-</details>
+    .OpenArray
+```
 
 #OpenObject
 
 Open a Objects with only first register of sql
-<details>
+```delphi
   TGenericQuery
     .New
     .SQL('')
     .SQL('')
-    .Execute
-</details>
+    .OpenObject
+```
