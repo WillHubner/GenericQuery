@@ -1,4 +1,4 @@
-unit Model.GenericQuery;
+unit GenericQuery;
 
 interface
 

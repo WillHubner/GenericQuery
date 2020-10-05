@@ -41,7 +41,7 @@ requires
 
 contains
   Model.Connection in 'src\core\Connection\Model.Connection.pas',
-  Model.GenericQuery in 'src\core\GenericQuery\Model.GenericQuery.pas',
+  GenericQuery in 'src\core\GenericQuery\GenericQuery.pas',
   Model.GenericQuery.Intf in 'src\interfaces\Model.GenericQuery.Intf.pas';
 
 end.
