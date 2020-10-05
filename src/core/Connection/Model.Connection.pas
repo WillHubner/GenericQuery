@@ -26,16 +26,22 @@ uses
   FireDAC.VCLUI.Wait,
   FireDAC.Comp.UI;
 
+type
+  TTypeConnection = (FireBird, SQLite);
+
 var
-  FDriver : TFDPhysFBDriverLink;
   FConnList : TObjectList<TFDConnection>;
   FServer : String;
   FDatabase : String;
+  FTypeConnection : TTypeConnection;
 
 function Connected : Integer;
 procedure Disconnected(IndexConn : Integer);
 
 implementation
+
+uses
+  System.SysUtils;
 
 function Connected : Integer;
 var
@@ -46,12 +52,33 @@ begin
 
   FConnList.Add(TFDConnection.Create(nil));
   IndexConn := Pred(FConnList.Count);
-  FConnList.Items[IndexConn].Params.DriverID := 'FB';
+
   FConnList.Items[IndexConn].Params.Database := FDatabase;
-  FConnList.Items[IndexConn].Params.UserName := 'sysdba';
-  FConnList.Items[IndexConn].Params.Password := 'masterkey';
-  FConnList.Items[IndexConn].Params.Add('Server='+FServer);
-  FConnList.Items[IndexConn].Params.Add('Protocol=TCPIP');
+
+  if FDatabase = '' then
+    raise Exception.Create('variable FDatabase must be informed!');
+
+  case FTypeConnection of
+    FireBird :
+      begin
+        if FServer = '' then
+          raise Exception.Create('variable FServer must be informed!');
+
+        FConnList.Items[IndexConn].Params.DriverID := 'FB';
+        FConnList.Items[IndexConn].Params.UserName := 'sysdba';
+        FConnList.Items[IndexConn].Params.Password := 'masterkey';
+        FConnList.Items[IndexConn].Params.Add('Server='+FServer);
+        FConnList.Items[IndexConn].Params.Add('Protocol=TCPIP');
+      end;
+
+    SQLite :
+      begin
+        FConnList.Items[IndexConn].Params.DriverID := 'SQLite';
+        FConnList.Items[IndexConn].Params.Database := FDatabase;
+        FConnList.Items[IndexConn].Params.Add('LockingMode=Normal');
+      end;
+  end;
+
   FConnList.Items[IndexConn].Connected;
 
   Result := IndexConn;
