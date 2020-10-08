@@ -5,7 +5,14 @@ Default database is running in firebird. To change only modify Mode.Connection u
 
 # How to use
 
-Implement the uses Model.Connection, Model.GenericQuery two parameters Model.Connection.FServer, Model.Connection.FDataBase.
+Implement this parameters:
+```delphi
+  Model.Connection.FServer := 'localhost';
+  Model.Connection.FDataBase := '../../db/db';
+  Model.Connection.FTypeConnection := SQLite;
+```  
+  
+Compatible with Firebird and SQLite.
 
 ## Execute
 
@@ -19,7 +26,7 @@ Execute command returns a boolean value.
 ```
 ## OpenArray
 
-Open a Array of Objects with fields data
+Open a Array of JSON Objects with fields data
 ```delphi
   TGenericQuery
     .New
@@ -30,7 +37,7 @@ Open a Array of Objects with fields data
 
 ## OpenObject
 
-Open a Objects with only first register of sql
+Open a JSON Object with only first register of sql
 ```delphi
   TGenericQuery
     .New
