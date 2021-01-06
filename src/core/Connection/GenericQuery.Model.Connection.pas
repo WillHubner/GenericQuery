@@ -1,4 +1,4 @@
-unit Model.Connection;
+unit GenericQuery.Model.Connection;
 
 interface
 

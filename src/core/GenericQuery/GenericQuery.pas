@@ -9,7 +9,7 @@ uses
   DataSetConverter4D,
   DataSetConverter4D.Impl,
   DataSetConverter4D.Helper,
-  DataSetConverter4D.Util, FireDAC.Comp.Client, Model.Connection,
+  DataSetConverter4D.Util, FireDAC.Comp.Client, GenericQuery.Model.Connection,
   System.Classes;
 
 type
@@ -41,8 +41,8 @@ uses
 constructor TGenericQuery.Create;
 begin
   FQuery := TFDQuery.Create(nil);
-  FIndexConnection := Model.Connection.Connected;
-  FQuery.Connection := Model.Connection.FConnList.Items[FIndexConnection];
+  FIndexConnection := GenericQuery.Model.Connection.Connected;
+  FQuery.Connection := GenericQuery.Model.Connection.FConnList.Items[FIndexConnection];
   FSQL := TStringList.Create;
 end;
 
@@ -51,7 +51,7 @@ begin
   FQuery.Close;
   FQuery.Free;
   FSQL.Free;
-  Model.Connection.Disconnected(FIndexConnection);
+  GenericQuery.Model.Connection.Disconnected(FIndexConnection);
 
   inherited;
 end;

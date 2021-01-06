@@ -40,8 +40,9 @@ requires
   FireDACMySQLDriver;
 
 contains
-  Model.Connection in 'src\core\Connection\Model.Connection.pas',
+  GenericQuery.Model.Connection in 'src\core\Connection\GenericQuery.Model.Connection.pas',
   GenericQuery in 'src\core\GenericQuery\GenericQuery.pas',
   Model.GenericQuery.Intf in 'src\interfaces\Model.GenericQuery.Intf.pas';
 
 end.
+

@@ -158,7 +158,7 @@
         <DCCReference Include="FireDACCommon.dcp"/>
         <DCCReference Include="FireDACIBDriver.dcp"/>
         <DCCReference Include="FireDACMySQLDriver.dcp"/>
-        <DCCReference Include="src\core\Connection\Model.Connection.pas"/>
+        <DCCReference Include="src\core\Connection\GenericQuery.Model.Connection.pas"/>
         <DCCReference Include="src\core\GenericQuery\GenericQuery.pas"/>
         <DCCReference Include="src\interfaces\Model.GenericQuery.Intf.pas"/>
         <BuildConfiguration Include="Release">
