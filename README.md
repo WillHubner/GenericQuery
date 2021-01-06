@@ -1,15 +1,15 @@
 # GenericQuery
 
 Class component a easily way to convert your SQL condition to a JSONArray or JSONString.
-Default database is running in firebird. To change only modify Mode.Connection uses.
+Default database is running in firebird. To change only modify GenericQuery.Model.Connection uses.
 
 # How to use
 
 Implement this parameters:
 ```delphi
-  Model.Connection.FServer := 'localhost';
-  Model.Connection.FDataBase := '../../db/db';
-  Model.Connection.FTypeConnection := SQLite;
+  GenericQuery.Model.Connection.FServer := 'localhost';
+  GenericQuery.Model.Connection.FDataBase := '../../db/db';
+  GenericQuery.Model.Connection.FTypeConnection := SQLite;
 ```  
   
 Compatible with Firebird and SQLite.
