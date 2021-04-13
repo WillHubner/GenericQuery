@@ -1,0 +1,11 @@
+{
+	"name": "GenericQuery",
+	"description": "",
+	"version": "1.0.0",
+	"homepage": "",
+	"mainsrc": "src/",
+	"projects": [],
+	"dependencies": {
+		"github.com/ezequieljuliano/DataSetConverter4Delphi": "^1.0.0"
+	}
+}
