@@ -42,7 +42,9 @@ requires
 contains
   GenericQuery.Model.Connection in 'src\core\Connection\GenericQuery.Model.Connection.pas',
   GenericQuery in 'src\core\GenericQuery\GenericQuery.pas',
-  Model.GenericQuery.Intf in 'src\interfaces\Model.GenericQuery.Intf.pas';
+  Model.GenericQuery.Intf in 'src\interfaces\Model.GenericQuery.Intf.pas',
+  DataSetToJSON in 'src\core\GenericQuery\DataSetToJSON.pas',
+  DataSetConverter4D.Util in 'src\core\GenericQuery\DataSetConverter4D.Util.pas';
 
 end.
 

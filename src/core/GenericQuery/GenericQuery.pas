@@ -5,11 +5,11 @@ interface
 uses
   System.JSON,
   Data.DB,
+  DataSetToJSON,
   Model.GenericQuery.Intf,
-  DataSetConverter4D,
-  DataSetConverter4D.Impl,
-  DataSetConverter4D.Helper,
-  DataSetConverter4D.Util, FireDAC.Comp.Client, GenericQuery.Model.Connection,
+  DataSetConverter4D.Util,
+  FireDAC.Comp.Client,
+  GenericQuery.Model.Connection,
   System.Classes;
 
 type
@@ -85,7 +85,7 @@ begin
   FQuery.Open;
 
   if FQuery.RecordCount > 0 then
-    Result := FQuery.AsJSONArray;
+    Result := TDataSetToJSON.New.DataSetToJSONArray(FQuery);
 end;
 
 function TGenericQuery.OpenObject: TJSONObject;
@@ -98,7 +98,7 @@ begin
   FQuery.Open;
 
   if FQuery.RecordCount > 0 then
-    Result := FQuery.AsJSONObject;
+    Result := TDataSetToJSON.New.DataSetToJSONObject(FQuery);
 end;
 
 function TGenericQuery.RecordCount: Integer;
