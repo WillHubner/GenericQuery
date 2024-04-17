@@ -18,6 +18,7 @@ type
     FIndexConnection : Integer;
     FQuery : TFDQuery;
     FSQL: TStringList;
+    FCurrentParam : Integer;
   public
     constructor Create;
     destructor Destroy; override;
@@ -25,6 +26,8 @@ type
     class function New : iGenericQuery;
 
     function SQL(vSQL : String) : iGenericQuery;
+    function Params(aValue : Variant) : iGenericQuery; overload;
+    function Params(aParamName : String; aValue : Variant) : iGenericQuery; overload;
     function Execute : Boolean;
     function OpenArray : TJSONArray;
     function OpenObject : TJSONObject;
@@ -44,6 +47,7 @@ begin
   FIndexConnection := GenericQuery.Model.Connection.Connected;
   FQuery.Connection := GenericQuery.Model.Connection.FConnList.Items[FIndexConnection];
   FSQL := TStringList.Create;
+  FCurrentParam := 0;
 end;
 
 destructor TGenericQuery.Destroy;
@@ -99,6 +103,20 @@ begin
 
   if FQuery.RecordCount > 0 then
     Result := TDataSetToJSON.New.DataSetToJSONObject(FQuery);
+end;
+
+function TGenericQuery.Params(aParamName: String;
+  aValue: Variant): iGenericQuery;
+begin
+  Result := Self;
+  FQuery.ParamByName(aParamName).Value := aValue;
+end;
+
+function TGenericQuery.Params(aValue: Variant): iGenericQuery;
+begin
+  Result := Self;
+  FQuery.Params[FCurrentParam].Value := aValue;
+  Inc(FCurrentParam);
 end;
 
 function TGenericQuery.RecordCount: Integer;

@@ -13,6 +13,8 @@ type
     function OpenObject : TJSONObject;
     function RecordCount : Integer;
     function SQL(vSQL : String) : iGenericQuery;
+    function Params(aValue : Variant) : iGenericQuery; overload;
+    function Params(aParamName : String; aValue : Variant) : iGenericQuery; overload;
   end;
 
 implementation

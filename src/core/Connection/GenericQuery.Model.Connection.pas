@@ -27,12 +27,14 @@ uses
   FireDAC.Comp.UI;
 
 type
-  TTypeConnection = (FireBird, SQLite);
+  TTypeConnection = (FireBird, SQLite, Ora);
 
 var
   FConnList : TObjectList<TFDConnection>;
   FServer : String;
   FDatabase : String;
+  FPassword : String;
+  FUsername : String;
   FTypeConnection : TTypeConnection;
 
 function Connected : Integer;
@@ -64,9 +66,12 @@ begin
         if FServer = '' then
           raise Exception.Create('variable FServer must be informed!');
 
+        if FUsername = '' then FUsername := 'sysdba';
+        if FPassword = '' then FPassword := 'masterkey';      
+
         FConnList.Items[IndexConn].Params.DriverID := 'FB';
-        FConnList.Items[IndexConn].Params.UserName := 'sysdba';
-        FConnList.Items[IndexConn].Params.Password := 'masterkey';
+        FConnList.Items[IndexConn].Params.UserName := FUsername;
+        FConnList.Items[IndexConn].Params.Password := FPassword;
         FConnList.Items[IndexConn].Params.Add('Server='+FServer);
         FConnList.Items[IndexConn].Params.Add('Protocol=TCPIP');
       end;
@@ -76,6 +81,18 @@ begin
         FConnList.Items[IndexConn].Params.DriverID := 'SQLite';
         FConnList.Items[IndexConn].Params.Database := FDatabase;
         FConnList.Items[IndexConn].Params.Add('LockingMode=Normal');
+      end;
+
+    Ora :
+      begin
+        if FServer = '' then
+          raise Exception.Create('variable FServer must be informed!');
+                
+        FConnList.Items[IndexConn].Params.DriverID := 'Ora';
+        FConnList.Items[IndexConn].Params.UserName := FUsername;
+        FConnList.Items[IndexConn].Params.Password := FPassword;
+        FConnList.Items[IndexConn].Params.Database := FServer+'/'+FDatabase;
+        FConnList.Items[IndexConn].Params.Add('CharacterSet=UTF8');
       end;
   end;
 
