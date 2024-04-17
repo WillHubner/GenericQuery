@@ -10,7 +10,8 @@ uses
   DataSetConverter4D.Util,
   FireDAC.Comp.Client,
   GenericQuery.Model.Connection,
-  System.Classes;
+  System.Classes,
+  FireDAC.Stan.Param;
 
 type
   TGenericQuery = class(TInterfacedObject, iGenericQuery)
